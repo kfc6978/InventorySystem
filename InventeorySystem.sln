@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventeorySystem", "InventeorySystem.csproj", "{3F6D94FE-DAFA-4A44-8602-94CCD4D8AFD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F6D94FE-DAFA-4A44-8602-94CCD4D8AFD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F6D94FE-DAFA-4A44-8602-94CCD4D8AFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F6D94FE-DAFA-4A44-8602-94CCD4D8AFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F6D94FE-DAFA-4A44-8602-94CCD4D8AFD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
