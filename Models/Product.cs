@@ -32,7 +32,7 @@ public class Product
 
     public override string ToString()
     {
-        return $"{Id} {Name} {Price} {Quantity} {Status}";
+        return $"ID: {Id}, Name: {Name},Price: {Price}, Quantity: {Quantity}, Status: {Status}";
     }
 
     public void UpdateStatus()

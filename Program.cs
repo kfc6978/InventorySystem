@@ -11,3 +11,4 @@ using InventeorySystem.Repositories;
 const string MYSQL_CONNECTION_STRING = "Server=localhost;Port=3306;Database=inventory_db;Uid=root;Pwd=j6u06j6M3*;";
 
 MysqlPouductRepository pouductRepository = new MysqlPouductRepository(MYSQL_CONNECTION_STRING);
+
