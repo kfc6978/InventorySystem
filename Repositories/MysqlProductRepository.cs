@@ -3,13 +3,13 @@ using MySql.Data.MySqlClient;
 
 namespace InventeorySystem.Repositories;
 
-public class MysqlPouductRepository : IProductRepository
+public class MysqlProductRepository : IProductRepository
 // java: implememt interface
 // java: extend ParentObj
 {
     private readonly string _connectionString;
     //constructor
-    public MysqlPouductRepository(string connectionString)
+    public MysqlProductRepository(string connectionString)
     {
         _connectionString = connectionString;
         IntializeDatabase();
@@ -23,7 +23,7 @@ public class MysqlPouductRepository : IProductRepository
             {
                 connection.Open();
                 string createTableSql = @"
-                create table if not exists pouducts(
+                create table if not exists products(
                     id int primary key auto_increment,
                     name varchar(100) not null,
                     price decimal(10, 2) not null,
@@ -50,7 +50,7 @@ public class MysqlPouductRepository : IProductRepository
         using (var connection = new MySqlConnection(_connectionString))
         {
             connection.Open();
-            string selectSql = "SELECT * FROM pouducts";
+            string selectSql = "SELECT * FROM products";
             // 1 box
             // 2 dish
             // 3 phone
@@ -64,7 +64,7 @@ public class MysqlPouductRepository : IProductRepository
                         //origin way
                         //Product product = new Product(reader.GetInt32("id"),
                         //    reader.GetString("name"),
-                        //    reader.GetInt32("price"),
+                        //    reader.GetDecimal("price"),
                         //    reader.GetInt32("quantity"));
                         //Product.status = (Product.ProductStatus)reader.GetInt32("status");
                         //products.Add(product);
@@ -92,8 +92,8 @@ public class MysqlPouductRepository : IProductRepository
         using (var connection = new MySqlConnection(_connectionString))
         {
             connection.Open();
-            string selectSql = "SELECT * FROM products WHERE id = @id";
             // gen by AI
+            string selectSql = "SELECT * FROM products WHERE id = @id";
             // 舊方式 -> string selectSql = "SELECT * FROM products WHERE id =" + id
             using (MySqlCommand cmd = new MySqlCommand(selectSql, connection))
             {
@@ -116,5 +116,23 @@ public class MysqlPouductRepository : IProductRepository
         }
 
         return product;
+    }
+
+    public void AddProduct(string? name, decimal price, int quantity)
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            connection.Open();
+            string insertsql = @"insert into products (name, price, quantity,status) 
+                                 values (@name, @price, @quantity, @status) ";
+            using (MySqlCommand cmd = new MySqlCommand(insertsql, connection))
+            {
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@quantity", quantity);
+                cmd.Parameters.AddWithValue("@status", 1);
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
